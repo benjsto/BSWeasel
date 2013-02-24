@@ -18,8 +18,6 @@
 		96C335061353F36900AD25CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C335051353F36900AD25CA /* main.m */; };
 		96C3350C1353F36900AD25CA /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96C3350A1353F36900AD25CA /* MainWindow.xib */; };
 		96C3351A1353F60100AD25CA /* BSWeaselViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96C335181353F60100AD25CA /* BSWeaselViewController.xib */; };
-		96C335321353FC2600AD25CA /* overlaygraphic.png in Resources */ = {isa = PBXBuildFile; fileRef = 96C335301353FC2600AD25CA /* overlaygraphic.png */; };
-		96C335331353FC2600AD25CA /* scanbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 96C335311353FC2600AD25CA /* scanbutton.png */; };
 		96C3353B1353FC5000AD25CA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C335361353FC5000AD25CA /* AppDelegate.m */; };
 		96C3353C1353FC5000AD25CA /* BSWeaselViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C335381353FC5000AD25CA /* BSWeaselViewController.m */; };
 		96C3353D1353FC5000AD25CA /* CaptureSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C3353A1353FC5000AD25CA /* CaptureSessionManager.m */; };
@@ -28,8 +26,6 @@
 		B214778E16CC86F400333C8A /* FitnessCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = B214778D16CC86F400333C8A /* FitnessCalculator.m */; };
 		B23BBFA716D9D5EB00C8AEF1 /* icon_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = B23BBFA616D9D5EB00C8AEF1 /* icon_retina.png */; };
 		B29FBA8516C0B72700D4E9A3 /* ImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B29FBA8416C0B72700D4E9A3 /* ImageHelper.m */; };
-		B29FBA8B16C2257000D4E9A3 /* ShareArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = B29FBA8A16C2257000D4E9A3 /* ShareArrow.png */; };
-		B29FBA8D16C2260F00D4E9A3 /* goldfields.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B29FBA8C16C2260F00D4E9A3 /* goldfields.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,8 +43,6 @@
 		96C3350B1353F36900AD25CA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		96C335191353F60100AD25CA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/BSWeaselViewController.xib; sourceTree = "<group>"; };
 		96C3352F1353FBFD00AD25CA /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
-		96C335301353FC2600AD25CA /* overlaygraphic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = overlaygraphic.png; sourceTree = "<group>"; };
-		96C335311353FC2600AD25CA /* scanbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scanbutton.png; sourceTree = "<group>"; };
 		96C335351353FC5000AD25CA /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		96C335361353FC5000AD25CA /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Classes/AppDelegate.m; sourceTree = "<group>"; };
 		96C335371353FC5000AD25CA /* BSWeaselViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSWeaselViewController.h; sourceTree = "<group>"; };
@@ -62,8 +56,6 @@
 		B23BBFA616D9D5EB00C8AEF1 /* icon_retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_retina.png; sourceTree = "<group>"; };
 		B29FBA8416C0B72700D4E9A3 /* ImageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageHelper.m; path = "../../UIImage-Conversion/ImageHelper.m"; sourceTree = "<group>"; };
 		B29FBA8616C0B73900D4E9A3 /* ImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageHelper.h; path = "../../UIImage-Conversion/ImageHelper.h"; sourceTree = "<group>"; };
-		B29FBA8A16C2257000D4E9A3 /* ShareArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ShareArrow.png; path = "../../UIImage-Conversion/iPad/ShareArrow.png"; sourceTree = "<group>"; };
-		B29FBA8C16C2260F00D4E9A3 /* goldfields.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = goldfields.jpg; path = "../../../Dropbox/Photos/iPhone Wallpapers/goldfields.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +128,6 @@
 			children = (
 				B29FBA8616C0B73900D4E9A3 /* ImageHelper.h */,
 				B29FBA8416C0B72700D4E9A3 /* ImageHelper.m */,
-				96C3353E1353FCE400AD25CA /* Images */,
 				96C3352F1353FBFD00AD25CA /* Prefix.pch */,
 				96C335001353F36900AD25CA /* Info.plist */,
 				96C335011353F36900AD25CA /* InfoPlist.strings */,
@@ -156,17 +147,6 @@
 				B214778D16CC86F400333C8A /* FitnessCalculator.m */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		96C3353E1353FCE400AD25CA /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				B29FBA8C16C2260F00D4E9A3 /* goldfields.jpg */,
-				B29FBA8A16C2257000D4E9A3 /* ShareArrow.png */,
-				96C335301353FC2600AD25CA /* overlaygraphic.png */,
-				96C335311353FC2600AD25CA /* scanbutton.png */,
-			);
-			name = Images;
 			sourceTree = "<group>";
 		};
 		96C3353F1353FCF500AD25CA /* XIBs */ = {
@@ -231,10 +211,6 @@
 				96C335031353F36900AD25CA /* InfoPlist.strings in Resources */,
 				96C3350C1353F36900AD25CA /* MainWindow.xib in Resources */,
 				96C3351A1353F60100AD25CA /* BSWeaselViewController.xib in Resources */,
-				96C335321353FC2600AD25CA /* overlaygraphic.png in Resources */,
-				96C335331353FC2600AD25CA /* scanbutton.png in Resources */,
-				B29FBA8B16C2257000D4E9A3 /* ShareArrow.png in Resources */,
-				B29FBA8D16C2260F00D4E9A3 /* goldfields.jpg in Resources */,
 				B214778B16C48FDD00333C8A /* Default-568h@2x.png in Resources */,
 				B23BBFA716D9D5EB00C8AEF1 /* icon_retina.png in Resources */,
 			);
