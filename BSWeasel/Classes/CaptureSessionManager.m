@@ -8,7 +8,6 @@
 @synthesize previewLayer;
 @synthesize stillImageOutput;
 @synthesize stillImage;
-//@synthesize bitmap;
 
 #pragma mark Capture Session Configuration
 
@@ -114,25 +113,6 @@
                                                            
                                                            UIImage *image = [self imageFromSampleBuffer:imageSampleBuffer];
                                                            image = [self imageByRotatingImage:image fromImageOrientation:image.imageOrientation];
-                                                           
-                                                           //int width = image.size.width;
-                                                           //int height = image.size.height;
-                                                           
-                                                           // Create a bitmap
-                                                           //[self setBitmap:[ImageHelper convertUIImageToBitmapRGBA8:image]];
-                                                           
-                                                           //[self setBitmap:bitmap];
-                                                           
-                                                           //bitmap = [self mutateSomePixels:bitmap];
-                                                           
-                                                           // Create a UIImage using the bitmap
-                                                           //image = [ImageHelper convertBitmapRGBA8ToUIImage:bitmap withWidth:width withHeight:height];
-                                                           
-                                                           // Cleanup
-//                                                           if(bitmap) {
-//                                                               free(bitmap);
-//                                                               bitmap = NULL;
-//                                                           }
                                                            
                                                            [self setStillImage:image];
                                                                                                                     

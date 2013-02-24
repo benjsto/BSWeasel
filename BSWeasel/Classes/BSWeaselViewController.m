@@ -34,12 +34,6 @@ int imageCounter = 0;
     
     backgroundQueue = dispatch_queue_create("com.bs.weasel.queue", NULL);
     
-    //referenceImage = [UIImage imageNamed:@"goldfields.jpg"];
-    
-    //referenceImage = [self resizeImage:referenceImage width:360 height:480];
-    
-    //referenceBitmap = [ImageHelper convertUIImageToBitmapRGBA8:referenceImage];
-    
     imageView = [[UIImageView alloc] initWithImage:image1];
     
     [imageView setFrame:CGRectMake(0, 0,[UIScreen mainScreen].bounds.size.width,[UIScreen mainScreen].bounds.size.height)];
@@ -55,10 +49,14 @@ int imageCounter = 0;
     [[[self captureManager] previewLayer] setPosition:CGPointMake(CGRectGetMidX(layerRect),CGRectGetMidY(layerRect))];
 	[[[self view] layer] addSublayer:[[self captureManager] previewLayer]];
     
+    UIImage *icon = [UIImage imageNamed:@"lens-icon.png"];
+    
     captureButton= [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [captureButton setFrame:CGRectMake(0, 0, 200, 90)];
+    captureButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [captureButton setImage:icon forState:UIControlStateNormal];
+    [captureButton setFrame:CGRectMake(0, 0, 140, 140)];
     [captureButton setCenter:CGPointMake(layerRect.size.width / 2, layerRect.size.height - 80)];
-    [captureButton setTitle:@"Image 1" forState:UIControlStateNormal];
+    //[captureButton setTitle:@"Image 1" forState:UIControlStateNormal];
     [captureButton addTarget:self action:@selector(buttonPressed) forControlEvents:UIControlEventTouchUpInside];
     [[self view] addSubview:captureButton];
     

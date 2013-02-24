@@ -5,9 +5,6 @@
     UIWindow *window;
 }
 
-//@property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (retain) CaptureSessionManager *captureManager;
-//@property (nonatomic, retain) UILabel *scanningLabel;
-//@property (retain) NSMutableArray *images;
 
 @end

@@ -10,7 +10,6 @@
 @property (retain) AVCaptureSession *captureSession;
 @property (retain) AVCaptureStillImageOutput *stillImageOutput;
 @property (nonatomic, retain) UIImage *stillImage;
-//@property unsigned char *bitmap;
 
 - (void)addVideoPreviewLayer;
 - (void)addStillImageOutput;
