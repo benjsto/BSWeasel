@@ -1,6 +1,5 @@
 #import "BSWeaselViewController.h"
 #import "ImageHelper.h"
-#import "mach/mach.h"
 
 @interface BSWeaselViewController ()
 
@@ -21,6 +20,8 @@ UIImage *image2;
 unsigned char *bitmap1;
 unsigned char *bitmap2;
 //unsigned char *referenceBitmap;
+
+UILabel *label;
 
 dispatch_queue_t backgroundQueue;
 
@@ -56,9 +57,18 @@ int imageCounter = 0;
     [captureButton setImage:icon forState:UIControlStateNormal];
     [captureButton setFrame:CGRectMake(0, 0, 140, 140)];
     [captureButton setCenter:CGPointMake(layerRect.size.width / 2, layerRect.size.height - 80)];
-    //[captureButton setTitle:@"Image 1" forState:UIControlStateNormal];
     [captureButton addTarget:self action:@selector(buttonPressed) forControlEvents:UIControlEventTouchUpInside];
     [[self view] addSubview:captureButton];
+    
+    label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 300, 50)];
+    
+    [label setCenter:CGPointMake(layerRect.size.width /2, 50)];
+    [label setFont:[UIFont systemFontOfSize:16]];
+    [label setBackgroundColor:[UIColor clearColor]];
+    [label setTextAlignment:NSTextAlignmentCenter];
+    [label setTextColor:[UIColor whiteColor]];
+    [label setText:@"Capture Image 1"];
+    [[self view] addSubview:label];    
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayImage) name:kImageCapturedSuccessfully object:[self captureManager]];
     
@@ -93,6 +103,8 @@ int imageCounter = 0;
         [captureButton setTitle:@"Image 2" forState:UIControlStateNormal];
         
         bitmap1 = [ImageHelper convertUIImageToBitmapRGBA8:[[self captureManager] stillImage]];
+        
+        [label setText:@"Capture Image 2"];
     }
     else if (imageCounter == 2)
     {
@@ -107,7 +119,7 @@ int imageCounter = 0;
                         bitmap2 = [self doGeneration:bitmap2];
                     }
                     
-                    [self report_memory];
+                    [NSThread sleepForTimeInterval:0.001];
                 }
             }
             
@@ -116,20 +128,6 @@ int imageCounter = 0;
         });
         
         uiTimer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(updateImage) userInfo:nil repeats:YES];
-    }
-}
-
--(void) report_memory {
-    struct task_basic_info info;
-    mach_msg_type_number_t size = sizeof(info);
-    kern_return_t kerr = task_info(mach_task_self(),
-                                   TASK_BASIC_INFO,
-                                   (task_info_t)&info,
-                                   &size);
-    if( kerr == KERN_SUCCESS ) {
-        NSLog(@"Memory in use (in bytes): %u", info.resident_size);
-    } else {
-        NSLog(@"Error with task_info(): %s", mach_error_string(kerr));
     }
 }
 
