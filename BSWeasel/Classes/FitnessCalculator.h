@@ -1,8 +1,8 @@
 //
 //  FitnessCalculator.h
-//  AROverlayExample
+//  BSWeasel
 //
-//  Created by Benjamin on 2/13/13.
+//  Created by Benjamin Stockwell on 2/13/13.
 //
 //
 
@@ -10,6 +10,9 @@
 
 @interface FitnessCalculator : NSObject
 
-+ (double)CalculateFitness;
++ (int)CalculateFitness: (unsigned char *)bitmap1
+                 compareTo: (unsigned char *)bitmap2
+                 withWidth: (int)width
+                withHeight: (int)height;
 
 @end

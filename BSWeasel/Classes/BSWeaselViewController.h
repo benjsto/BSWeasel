@@ -1,3 +1,11 @@
+//
+//  BSWeaselViewController.h
+//  BSWeasel
+//
+//  Created by Benjamin Stockwell on 2/13/13.
+//
+//
+
 #import <UIKit/UIKit.h>
 #import "CaptureSessionManager.h"
 

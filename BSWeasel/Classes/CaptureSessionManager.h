@@ -1,3 +1,11 @@
+//
+//  CaptureSessionManager.h
+//  BSWeasel
+//
+//  Created by Benjamin Stockwell on 2/13/13.
+//
+//
+
 #import <AVFoundation/AVFoundation.h>
 
 #define kImageCapturedSuccessfully @"imageCapturedSuccessfully"

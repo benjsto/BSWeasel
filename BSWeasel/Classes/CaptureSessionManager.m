@@ -1,3 +1,11 @@
+//
+//  CaptureSessionManager.m
+//  BSWeasel
+//
+//  Created by Benjamin Stockwell on 2/13/13.
+//
+//
+
 #import "CaptureSessionManager.h"
 #import <ImageIO/ImageIO.h>
 #import "ImageHelper.h"
@@ -21,7 +29,7 @@
 - (void)addVideoPreviewLayer {
     captureSession.sessionPreset = AVCaptureSessionPresetMedium;
 	[self setPreviewLayer:[[[AVCaptureVideoPreviewLayer alloc] initWithSession:[self captureSession]] autorelease]];
-	[[self previewLayer] setVideoGravity:AVLayerVideoGravityResizeAspectFill];  
+	[[self previewLayer] setVideoGravity:AVLayerVideoGravityResizeAspectFill];
 }
 
 - (void)addVideoInputFrontCamera:(BOOL)front {
