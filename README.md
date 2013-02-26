@@ -1,7 +1,7 @@
 BSWeasel
 ========
 
-This is a simple application demonstrating a genetic algorithm for matching 2 images captures from the camera.
+This is a simple application demonstrating a genetic algorithm for matching 2 images captured from the camera.
 
 It owes heavily to Richard Dawkins' Weasel program: http://en.wikipedia.org/wiki/Weasel_program 
 
