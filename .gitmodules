@@ -1,0 +1,3 @@
+[submodule "UIImage-Conversion"]
+	path = UIImage-Conversion
+	url = git://github.com/PaulSolt/UIImage-Conversion.git

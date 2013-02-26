@@ -26,7 +26,7 @@
 		B214778E16CC86F400333C8A /* FitnessCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = B214778D16CC86F400333C8A /* FitnessCalculator.m */; };
 		B23BBFA716D9D5EB00C8AEF1 /* icon_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = B23BBFA616D9D5EB00C8AEF1 /* icon_retina.png */; };
 		B23BBFA916D9DD2500C8AEF1 /* lens-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B23BBFA816D9DD2500C8AEF1 /* lens-icon.png */; };
-		B29FBA8516C0B72700D4E9A3 /* ImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B29FBA8416C0B72700D4E9A3 /* ImageHelper.m */; };
+		B2F4B6B516DC41D300470077 /* ImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F4B6B416DC41D300470077 /* ImageHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,8 +56,8 @@
 		B214778D16CC86F400333C8A /* FitnessCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitnessCalculator.m; sourceTree = "<group>"; };
 		B23BBFA616D9D5EB00C8AEF1 /* icon_retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_retina.png; sourceTree = "<group>"; };
 		B23BBFA816D9DD2500C8AEF1 /* lens-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lens-icon.png"; sourceTree = SOURCE_ROOT; };
-		B29FBA8416C0B72700D4E9A3 /* ImageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageHelper.m; path = "../../UIImage-Conversion/ImageHelper.m"; sourceTree = "<group>"; };
-		B29FBA8616C0B73900D4E9A3 /* ImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageHelper.h; path = "../../UIImage-Conversion/ImageHelper.h"; sourceTree = "<group>"; };
+		B2F4B6B316DC41D300470077 /* ImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageHelper.h; path = "UIImage-Conversion/ImageHelper.h"; sourceTree = SOURCE_ROOT; };
+		B2F4B6B416DC41D300470077 /* ImageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageHelper.m; path = "UIImage-Conversion/ImageHelper.m"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,9 +128,9 @@
 		96C334FF1353F36900AD25CA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B2F4B6B316DC41D300470077 /* ImageHelper.h */,
+				B2F4B6B416DC41D300470077 /* ImageHelper.m */,
 				B23BBFA816D9DD2500C8AEF1 /* lens-icon.png */,
-				B29FBA8616C0B73900D4E9A3 /* ImageHelper.h */,
-				B29FBA8416C0B72700D4E9A3 /* ImageHelper.m */,
 				96C3352F1353FBFD00AD25CA /* Prefix.pch */,
 				96C335001353F36900AD25CA /* Info.plist */,
 				96C335011353F36900AD25CA /* InfoPlist.strings */,
@@ -231,8 +231,8 @@
 				96C3353B1353FC5000AD25CA /* AppDelegate.m in Sources */,
 				96C3353C1353FC5000AD25CA /* BSWeaselViewController.m in Sources */,
 				96C3353D1353FC5000AD25CA /* CaptureSessionManager.m in Sources */,
-				B29FBA8516C0B72700D4E9A3 /* ImageHelper.m in Sources */,
 				B214778E16CC86F400333C8A /* FitnessCalculator.m in Sources */,
+				B2F4B6B516DC41D300470077 /* ImageHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
