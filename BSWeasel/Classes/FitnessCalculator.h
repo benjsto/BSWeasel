@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+typedef struct
+{
+    unsigned char b;
+    unsigned char g;
+    unsigned char r;
+    unsigned char a;
+} bgra;
+
 @interface FitnessCalculator : NSObject
 
 + (int)CalculateFitness: (unsigned char *)bitmap1

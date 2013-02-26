@@ -35,8 +35,11 @@ UILabel *label;
 dispatch_queue_t backgroundQueue;
 
 int imageCounter = 0;
-
 int progress = 0;
+
+const int GENERATIONS = 20000;
+const int PIXELS_PER_GEN = 100;
+const int DELTA_MAX = 150;
 
 - (BOOL)shouldAutorotate
 {
@@ -123,8 +126,6 @@ int progress = 0;
     }
 }
 
-const int GENERATIONS = 20000;
-
 // Handle the 2 image captures here.
 - (void)handleImageCapture
 {
@@ -149,7 +150,7 @@ const int GENERATIONS = 20000;
         
         // Dispatch the image process asynchronously using GCD.
         dispatch_async(backgroundQueue,^ {
-            int fitness = INT32_MAX;
+            int error = INT32_MAX;
             
             int sz = sizeof(bgra) * width * height;
             unsigned char *newBitmap = malloc(sz);
@@ -161,14 +162,13 @@ const int GENERATIONS = 20000;
                         
                         newBitmap = [self doGeneration:newBitmap numPixels:sz];
                         
-                        int newFitness = [FitnessCalculator CalculateFitness:bitmap1 compareTo:newBitmap withWidth:width withHeight:height];
+                        int newError = [FitnessCalculator CalculateFitness:bitmap1 compareTo:newBitmap withWidth:width withHeight:height];
                         
-                        if (newFitness <= fitness)
+                        if (newError <= error)
                         {
                             memcpy(bitmap2, newBitmap, sz);
                             
-                            fitness = newFitness;
-                            //NSLog(@"Fitness: %i", fitness);
+                            error = newError;
                         }
                         
                         progress = i;
@@ -213,17 +213,6 @@ const int GENERATIONS = 20000;
     UIGraphicsEndImageContext();
     return result;
 }
-
-typedef struct
-{
-    unsigned char b;
-    unsigned char g;
-    unsigned char r;
-    unsigned char a;
-} bgra;
-
-const int PIXELS_PER_GEN = 100;
-const int DELTA_MAX = 150;
 
 - (unsigned char*)doGeneration:(unsigned char*)bmp
                     numPixels:(int)count

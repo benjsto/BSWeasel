@@ -10,14 +10,6 @@
 
 @implementation FitnessCalculator
 
-typedef struct
-{
-    unsigned char b;
-    unsigned char g;
-    unsigned char r;
-    unsigned char a;
-} bgra;
-
 + (int)CalculateFitness: (unsigned char *)bitmap1
                  compareTo: (unsigned char *)bitmap2
                  withWidth: (int) width
