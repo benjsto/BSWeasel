@@ -9,3 +9,6 @@ as well as Roger Alsing's Mona Lisa: http://rogeralsing.com/2008/12/07/genetic-p
 
 I have only tested this on an iPhone 5, so I'm not sure how the video preview and images will scale on smaller
 or non-Retina displays.
+
+I make use of Paul Solt's nice UIImage-Conversion (https://github.com/PaulSolt/UIImage-Conversion)
+to get easy raw bitmap arrays and convert back to UIImages.
