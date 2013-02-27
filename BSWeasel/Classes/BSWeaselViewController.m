@@ -37,9 +37,8 @@ dispatch_queue_t backgroundQueue;
 int imageCounter = 0;
 int progress = 0;
 
-const int GENERATIONS = 50000;
-const int PIXELS_PER_GEN = 50;
-const int DELTA_MAX = 150;
+const int GENERATIONS = 100000;
+const int PIXELS_PER_GEN = 10;
 
 - (BOOL)shouldAutorotate
 {
@@ -186,7 +185,7 @@ const int DELTA_MAX = 150;
         [[[self captureManager] previewLayer] removeFromSuperlayer];
         
         // Start the timer to periodically update the image displayed to the user.
-        uiTimer = [NSTimer scheduledTimerWithTimeInterval:0.20 target:self selector:@selector(updateImage) userInfo:nil repeats:YES];
+        uiTimer = [NSTimer scheduledTimerWithTimeInterval:0.50 target:self selector:@selector(updateImage) userInfo:nil repeats:YES];
         
         [label setText:@"Mutating..."];
         [[self view] addSubview:cheaterSwitch];
@@ -240,14 +239,6 @@ const int DELTA_MAX = 150;
             new->b = ref->b;
             new->g = ref->g;
             new->r = ref->r;
-            
-//            int bdelta = (int)arc4random_uniform(DELTA_MAX * 2 + 1) - DELTA_MAX;
-//            int gdelta = (int)arc4random_uniform(DELTA_MAX * 2 + 1) - DELTA_MAX;
-//            int rdelta = (int)arc4random_uniform(DELTA_MAX * 2 + 1) - DELTA_MAX;
-//            
-//            new->b += bdelta;
-//            new->g += gdelta;
-//            new->r += rdelta;
         }
     }
     
