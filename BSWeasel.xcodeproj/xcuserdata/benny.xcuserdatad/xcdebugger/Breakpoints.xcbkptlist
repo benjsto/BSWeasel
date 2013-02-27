@@ -281,19 +281,6 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "BSWeasel/Classes/BSWeaselViewController.m"
-         timestampString = "383555489.352626"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "237"
-         endingLineNumber = "237"
-         landmarkName = "-doGeneration:numPixels:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "BSWeasel/Classes/BSWeaselViewController.m"
          timestampString = "383554501.087949"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"

@@ -19,7 +19,7 @@
     
     int errTotal = 0;
     
-    for (int i = 0; i < numPixels; i++) {
+    for (int i = 0; i < numPixels * 4; i+=4) {
         bgra *px1 = (bgra *)(&bitmap1[i]);
         bgra *px2 = (bgra *)(&bitmap2[i]);
         

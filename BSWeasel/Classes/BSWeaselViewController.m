@@ -37,8 +37,8 @@ dispatch_queue_t backgroundQueue;
 int imageCounter = 0;
 int progress = 0;
 
-const int GENERATIONS = 20000;
-const int PIXELS_PER_GEN = 100;
+const int GENERATIONS = 50000;
+const int PIXELS_PER_GEN = 50;
 const int DELTA_MAX = 150;
 
 - (BOOL)shouldAutorotate
@@ -218,28 +218,36 @@ const int DELTA_MAX = 150;
                     numPixels:(int)count
 {
     for (int i = 0; i <  PIXELS_PER_GEN; i++) {
-        int idx = arc4random_uniform(count);
+        int idxRef = arc4random_uniform(count);
+        int idxNew = arc4random_uniform(count);
                         
-        idx = idx - (idx % 4);
+        idxRef = idxRef - (idxRef % 4);
+        idxNew = idxNew - (idxNew % 4);
         
-        bgra *ref = (bgra *)(&bitmap1[idx]);
-        bgra *n = (bgra *)(&bmp[idx]);
+        bgra *ref = (bgra *)(&bitmap1[idxRef]);
+        bgra *new = (bgra *)(&bmp[idxNew]);
         
         if ([cheaterSwitch isOn])
         {
-            n->b = ref->b;
-            n->g = ref->g;
-            n->r = ref->r;
+            ref = (bgra *)(&bitmap1[idxNew]);
+            
+            new->b = ref->b;
+            new->g = ref->g;
+            new->r = ref->r;
         }
         else
         {
-            int bdelta = (int)arc4random_uniform(DELTA_MAX * 2 + 1) - DELTA_MAX;
-            int gdelta = (int)arc4random_uniform(DELTA_MAX * 2 + 1) - DELTA_MAX;
-            int rdelta = (int)arc4random_uniform(DELTA_MAX * 2 + 1) - DELTA_MAX;
+            new->b = ref->b;
+            new->g = ref->g;
+            new->r = ref->r;
             
-            n->b += bdelta;
-            n->g += gdelta;
-            n->r += rdelta;
+//            int bdelta = (int)arc4random_uniform(DELTA_MAX * 2 + 1) - DELTA_MAX;
+//            int gdelta = (int)arc4random_uniform(DELTA_MAX * 2 + 1) - DELTA_MAX;
+//            int rdelta = (int)arc4random_uniform(DELTA_MAX * 2 + 1) - DELTA_MAX;
+//            
+//            new->b += bdelta;
+//            new->g += gdelta;
+//            new->r += rdelta;
         }
     }
     
