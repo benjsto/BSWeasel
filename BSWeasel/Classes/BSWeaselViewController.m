@@ -67,7 +67,6 @@ const int PIXELS_PER_GEN = 10;
     
     UIImage *icon = [UIImage imageNamed:@"lens-icon.png"];
     
-    //captureButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     captureButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [captureButton setImage:icon forState:UIControlStateNormal];
     [captureButton setFrame:CGRectMake(0, 0, 140, 140)];
@@ -120,12 +119,10 @@ const int PIXELS_PER_GEN = 10;
 - (void)restartPressed {
     restart = YES;
     
-    
     // After our processing is done, stop updating the UI.
     [uiTimer invalidate];
     uiTimer = nil;
     
-
     [[[self view] layer] addSublayer:[[self captureManager] previewLayer]];
     
     CGRect layerRect = [[[self view] layer] bounds];
@@ -137,6 +134,14 @@ const int PIXELS_PER_GEN = 10;
     [captureButton setCenter:CGPointMake(layerRect.size.width / 2, layerRect.size.height - 80)];
     [captureButton addTarget:self action:@selector(capturePressed) forControlEvents:UIControlEventTouchUpInside];
     [[self view] addSubview:captureButton];
+    
+    [label setCenter:CGPointMake(layerRect.size.width /2, 50)];
+    [label setFont:[UIFont systemFontOfSize:16]];
+    [label setBackgroundColor:[UIColor clearColor]];
+    [label setTextAlignment:NSTextAlignmentCenter];
+    [label setTextColor:[UIColor whiteColor]];
+    [label setText:@"Capture Image 1"];
+    [[self view] addSubview:label];
 }
 
 // Periodic image update (asynchronous from image mutation).

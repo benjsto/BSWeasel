@@ -4,3 +4,7 @@
 BSWeasel.xcodeproj/project.xcworkspace/xcuserdata/benny.xcuserdatad/UserInterfaceState.xcuserstate
 
 BSWeasel.xcodeproj/xcuserdata/benny.xcuserdatad/xcdebugger/Breakpoints.xcbkptlist
+
+*.xcuserstate
+
+*.xcbkptlist

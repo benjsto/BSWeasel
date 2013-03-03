@@ -203,11 +203,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "BSWeasel/Classes/BSWeaselViewController.m"
-         timestampString = "384044939.490048"
+         timestampString = "384045937.330425"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "147"
-         endingLineNumber = "147"
+         startingLineNumber = "152"
+         endingLineNumber = "152"
          landmarkName = "-updateImage"
          landmarkType = "5">
       </FileBreakpoint>
@@ -216,11 +216,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "BSWeasel/Classes/BSWeaselViewController.m"
-         timestampString = "384044939.490048"
+         timestampString = "384045937.330425"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "153"
-         endingLineNumber = "153"
+         startingLineNumber = "158"
+         endingLineNumber = "158"
          landmarkName = "-updateImage"
          landmarkType = "5">
       </FileBreakpoint>
@@ -229,11 +229,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "BSWeasel/Classes/BSWeaselViewController.m"
-         timestampString = "384045089.034594"
+         timestampString = "384045937.330425"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "241"
-         endingLineNumber = "241"
+         startingLineNumber = "246"
+         endingLineNumber = "246"
          landmarkName = "-handleImageCapture"
          landmarkType = "5">
       </FileBreakpoint>
@@ -242,11 +242,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "BSWeasel/Classes/BSWeaselViewController.m"
-         timestampString = "384045089.034594"
+         timestampString = "384045937.330425"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "242"
-         endingLineNumber = "242"
+         startingLineNumber = "247"
+         endingLineNumber = "247"
          landmarkName = "-handleImageCapture"
          landmarkType = "5">
       </FileBreakpoint>
@@ -255,11 +255,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "BSWeasel/Classes/BSWeaselViewController.m"
-         timestampString = "384044939.490048"
+         timestampString = "384045937.330425"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "188"
-         endingLineNumber = "188"
+         startingLineNumber = "193"
+         endingLineNumber = "193"
          landmarkName = "-handleImageCapture"
          landmarkType = "5">
       </FileBreakpoint>
