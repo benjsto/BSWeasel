@@ -28,6 +28,7 @@ unsigned char *bitmap2;
 
 NSTimer *uiTimer;
 UIButton *captureButton;
+UIButton *restartButton;
 UIProgressView *progressBar;
 UISwitch *cheaterSwitch;
 UILabel *label;
@@ -37,7 +38,9 @@ dispatch_queue_t backgroundQueue;
 int imageCounter = 0;
 int progress = 0;
 
-const int GENERATIONS = 100000;
+bool restart = NO;
+
+const int GENERATIONS = 150000;
 const int PIXELS_PER_GEN = 10;
 
 - (BOOL)shouldAutorotate
@@ -49,8 +52,7 @@ const int PIXELS_PER_GEN = 10;
     backgroundQueue = dispatch_queue_create("com.bs.weasel.queue", NULL);
     
     imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,[UIScreen mainScreen].bounds.size.width,[UIScreen mainScreen].bounds.size.height)];
-    
-    //[imageView setFrame:CGRectMake(0, 0,[UIScreen mainScreen].bounds.size.width,[UIScreen mainScreen].bounds.size.height)];
+
     [[self view] addSubview:imageView];
            
 	[self setCaptureManager:[[[CaptureSessionManager alloc] init] autorelease]];
@@ -65,12 +67,12 @@ const int PIXELS_PER_GEN = 10;
     
     UIImage *icon = [UIImage imageNamed:@"lens-icon.png"];
     
-    captureButton= [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    //captureButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     captureButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [captureButton setImage:icon forState:UIControlStateNormal];
     [captureButton setFrame:CGRectMake(0, 0, 140, 140)];
     [captureButton setCenter:CGPointMake(layerRect.size.width / 2, layerRect.size.height - 80)];
-    [captureButton addTarget:self action:@selector(buttonPressed) forControlEvents:UIControlEventTouchUpInside];
+    [captureButton addTarget:self action:@selector(capturePressed) forControlEvents:UIControlEventTouchUpInside];
     [[self view] addSubview:captureButton];
     
     label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 300, 50)];
@@ -88,20 +90,53 @@ const int PIXELS_PER_GEN = 10;
     [progressBar setCenter:CGPointMake(layerRect.size.width / 2, layerRect.size.height - 100)];
     [progressBar setProgressViewStyle:UIProgressViewStyleDefault];
     [progressBar setTrackTintColor:[UIColor blackColor]];
-    [progressBar setProgressTintColor:[UIColor lightGrayColor]];
+    [progressBar setProgressTintColor:[UIColor orangeColor]];
     
     cheaterSwitch = [UISwitch alloc];
     [cheaterSwitch initWithFrame:CGRectMake(0, 0, 80, 40)];
-    [cheaterSwitch setCenter:CGPointMake(layerRect.size.width / 2, layerRect.size.height - 50)];
+    [cheaterSwitch setCenter:CGPointMake(layerRect.size.width / 4, layerRect.size.height - 50)];
     [cheaterSwitch setOnTintColor:[UIColor lightGrayColor]];
+    
+    restartButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [restartButton setTitle:@"Restart" forState:UIControlStateNormal];
+    [restartButton setTintColor:[UIColor blueColor]];
+    [restartButton setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    [restartButton setBackgroundColor:[UIColor clearColor]];
+    [restartButton setFrame:CGRectMake(0, 0, 100, 40)];
+    [restartButton setCenter:CGPointMake(3 * layerRect.size.width / 4, layerRect.size.height - 50)];
+    [restartButton addTarget:self action:@selector(restartPressed) forControlEvents:UIControlEventTouchUpInside];
+    [restartButton setHidden:YES];
+    [[self view] addSubview:restartButton];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleImageCapture) name:kImageCapturedSuccessfully object:[self captureManager]];
     
 	[[captureManager captureSession] startRunning];
 }
 
-- (void)buttonPressed {
+- (void)capturePressed {
     [[self captureManager] captureStillImage];
+}
+
+- (void)restartPressed {
+    restart = YES;
+    
+    
+    // After our processing is done, stop updating the UI.
+    [uiTimer invalidate];
+    uiTimer = nil;
+    
+
+    [[[self view] layer] addSublayer:[[self captureManager] previewLayer]];
+    
+    CGRect layerRect = [[[self view] layer] bounds];
+    
+    UIImage *icon = [UIImage imageNamed:@"lens-icon.png"];
+    captureButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [captureButton setImage:icon forState:UIControlStateNormal];
+    [captureButton setFrame:CGRectMake(0, 0, 140, 140)];
+    [captureButton setCenter:CGPointMake(layerRect.size.width / 2, layerRect.size.height - 80)];
+    [captureButton addTarget:self action:@selector(capturePressed) forControlEvents:UIControlEventTouchUpInside];
+    [[self view] addSubview:captureButton];
 }
 
 // Periodic image update (asynchronous from image mutation).
@@ -140,6 +175,8 @@ const int PIXELS_PER_GEN = 10;
     }
     else if (imageCounter == 2)
     {
+        imageCounter = 0;
+        
         [captureButton removeFromSuperview];
         
         bitmap2 = [ImageHelper convertUIImageToBitmapRGBA8:[[self captureManager] stillImage]];
@@ -149,37 +186,45 @@ const int PIXELS_PER_GEN = 10;
         
         // Dispatch the image process asynchronously using GCD.
         dispatch_async(backgroundQueue,^ {
-            int error = INT32_MAX;
-            
-            int sz = sizeof(bgra) * width * height;
-            unsigned char *newBitmap = malloc(sz);
-            
-            for (int i = 0; i < GENERATIONS; i++) {
-                @autoreleasepool {                    
-                    @synchronized(self){
-                        memcpy(newBitmap, bitmap2, sz);
-                        
-                        newBitmap = [self doGeneration:newBitmap numPixels:sz];
-                        
-                        int newError = [FitnessCalculator CalculateFitness:bitmap1 compareTo:newBitmap withWidth:width withHeight:height];
-                        
-                        if (newError <= error)
-                        {
-                            memcpy(bitmap2, newBitmap, sz);
+                int error = INT32_MAX;
+                
+                int sz = sizeof(bgra) * width * height;
+                unsigned char *newBitmap = malloc(sz);
+                
+                for (int i = 0; i < GENERATIONS; i++) {
+                    if (restart)
+                    {
+                        restart = NO;
+                        break;
+                    }
+                    
+                    @autoreleasepool {
+                        @synchronized(self){
+                            memcpy(newBitmap, bitmap2, sz);
                             
-                            error = newError;
+                            newBitmap = [self doGeneration:newBitmap numPixels:sz];
+                            
+                            int newError = [FitnessCalculator CalculateFitness:bitmap1 compareTo:newBitmap withWidth:width withHeight:height];
+                            
+                            if (newError <= error)
+                            {
+                                memcpy(bitmap2, newBitmap, sz);
+                                
+                                error = newError;
+                            }
+                            
+                            progress = i;
                         }
-                        
-                        progress = i;
                     }
                 }
-            }
-            
-            free(newBitmap);
-            
-            // After our processing is done, stop updating the UI.
-            [uiTimer invalidate];
-            uiTimer = nil;
+                
+                free(newBitmap);
+                
+                // After our processing is done, stop updating the UI.
+                [uiTimer invalidate];
+                uiTimer = nil;
+                
+                [label setText:@"Mutation Complete."];
         });
         
         [[[self captureManager] previewLayer] removeFromSuperlayer];
@@ -190,6 +235,7 @@ const int PIXELS_PER_GEN = 10;
         [label setText:@"Mutating..."];
         [[self view] addSubview:cheaterSwitch];
         [[self view] addSubview:progressBar];
+        [restartButton setHidden:NO];
         
         UILabel *cheatLabel = [UILabel alloc];
         
